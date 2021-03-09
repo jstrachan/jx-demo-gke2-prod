@@ -176,7 +176,7 @@ kustomize: pre-build
 .PHONY: copy-resources
 copy-resources: pre-build
 	@cp -r ./build/base/* $(OUTPUT_DIR)
-	@rm $(OUTPUT_DIR)/kustomization.yaml
+	@rm -rf $(OUTPUT_DIR)/kustomization.yaml
 
 .PHONY: lint
 lint:
