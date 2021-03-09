@@ -5,12 +5,8 @@ environments:
     - jx-values.yaml
 namespace: jx
 repositories:
-- name: jenkins-x
-  url: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - name: jx3
   url: https://storage.googleapis.com/jenkinsxio/charts
-- name: jxgh
-  url: https://jenkins-x-charts.github.io/repo
 releases:
 - chart: jx3/jxboot-helmfile-resources
   version: 1.0.37
@@ -30,12 +26,6 @@ releases:
   version: 0.0.6
   name: local-external-secrets
   values:
-  - jx-values.yaml
-- chart: jx3/jx-kh-check
-  version: 0.0.56
-  name: health-checks-jx
-  values:
-  - ../../versionStream/charts/jx3/health-checks-jx/values.yaml.gotmpl
   - jx-values.yaml
 templates: {}
 renderedvalues: {}
