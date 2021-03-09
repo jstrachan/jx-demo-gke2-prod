@@ -23,6 +23,12 @@ GENERATE_SCHEDULER ?= gitops-scheduler
 #     export REPOSITORY_RESOLVE=no-repository-resolve
 REPOSITORY_RESOLVE ?= repository-resolve
 
+# this target is only needed for development clusters
+# for remote staging/production clusters try:
+#
+#     export GITOPS_WEBHOOK_UPDATE=no-gitops-webhook-update
+GITOPS_WEBHOOK_UPDATE ?= gitops-webhook-update
+
 # these values are only required for vault - you can ignore if you are using a cloud secret store
 VAULT_ADDR ?= https://vault.jx-vault:8200
 VAULT_NAMESPACE ?= jx-vault
@@ -197,8 +203,17 @@ verify-install:
 
 .PHONY: verify
 verify: dev-ns verify-ingress
-	jx gitops webhook update --warn-on-fail
 	jx health status -A
+
+
+.PHONY: gitops-webhook-update
+gitops-webhook-update:
+	jx gitops webhook update --warn-on-fail
+
+.PHONY: no-gitops-webhook-update
+no-gitops-webhook-update:
+	@echo "disabled 'jx gitops webhook update' as we are not a development cluster"
+
 
 .PHONY: dev-ns verify-ignore
 verify-ignore: verify-ingress-ignore
