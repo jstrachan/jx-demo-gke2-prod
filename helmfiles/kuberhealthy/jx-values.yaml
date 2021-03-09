@@ -31,7 +31,7 @@ jxRequirements:
     provider: kubernetes
     registry: ghcr.io
   ingress:
-    domain: change.me
+    domain: 34.105.205.178.nip.io
     externalDNS: false
     kind: ingress
     namespaceSubDomain: -kuberhealthy.
