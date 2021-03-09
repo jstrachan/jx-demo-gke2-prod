@@ -39,6 +39,8 @@ jxRequirements:
       email: ""
       enabled: false
       production: false
+  pipelineUser:
+    username: jstrachan
   repository: bucketrepo
   secretStorage: local
   vault: {}
