@@ -17,11 +17,14 @@ spec:
     registry: ghcr.io
   environments:
   - key: dev
+    owner: jstrachan
+    repository: jx-demo-gke2-prod
   - key: staging
   - key: production
   ingress:
     domain: ""
     externalDNS: false
+    kind: ingress
     namespaceSubDomain: -jx.
     tls:
       email: ""
