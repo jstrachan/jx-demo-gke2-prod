@@ -202,7 +202,7 @@ verify-install:
 	-jx verify install --pod-wait-time=2m
 
 .PHONY: verify
-verify: dev-ns verify-ingress
+verify: dev-ns verify-ingress $(GITOPS_WEBHOOK_UPDATE)
 	jx health status -A
 
 
