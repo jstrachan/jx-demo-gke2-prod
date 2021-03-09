@@ -42,21 +42,6 @@
     repositoryUrl: https://storage.googleapis.com/jenkinsxio/charts
     resourcePath: config-root/namespaces/jx/local-external-secrets
     version: 0.0.6
-  - apiVersion: v2
-    appVersion: 3.0.0
-    description: Jenkins X next gen cloud CI / CD platform for Kubernetes
-    home: https://jenkins-x.io/
-    icon: https://jenkins-x.github.io/jenkins-x-website/img/profile.png
-    maintainers:
-    - email: jenkins-x@googlegroups.com
-      name: Jenkins X Team
-    name: jx-kh-check
-    repositoryName: jx3
-    repositoryUrl: https://storage.googleapis.com/jenkinsxio/charts
-    resourcePath: config-root/namespaces/jx/jx-kh-check-health-checks-jx
-    sources:
-    - https://github.com/jenkins-x-plugins/jx-kh-check
-    version: 0.0.56
 - namespace: kuberhealthy
   path: helmfiles/kuberhealthy/helmfile.yaml
   releases:
