@@ -8,6 +8,12 @@ HELM_TMP_SECRETS ?= /tmp/secrets/jx-helm
 # this target is only needed for development clusters
 # for remote staging/production clusters try:
 #
+#     export COPY_SOURCE=no-copy-source
+COPY_SOURCE ?= copy-source
+
+# this target is only needed for development clusters
+# for remote staging/production clusters try:
+#
 #     export GENERATE_SCHEDULER=no-gitops-scheduler
 GENERATE_SCHEDULER ?= gitops-scheduler
 
@@ -46,12 +52,19 @@ clean:
 .PHONY: setup
 setup:
 
+.PHONY: copy-source
+copy-source:
+	@cp -r versionStream/src/* build
+
+.PHONY: no-copy-source
+no-copy-source:
+	@echo "disabled the copy source as we are not a development cluster"
+
 .PHONY: init
 init: setup
 	@mkdir -p $(FETCH_DIR)
 	@mkdir -p $(TMP_TEMPLATE_DIR)
 	@mkdir -p $(OUTPUT_DIR)/namespaces/jx
-	@cp -r versionStream/src/* build
 	@mkdir -p $(FETCH_DIR)/cluster/crds
 
 
@@ -86,7 +99,7 @@ no-gitops-scheduler:
 	@echo "disabled the lighthouse scheduler generation as we are not a development cluster"
 
 .PHONY: fetch
-fetch: init $(REPOSITORY_RESOLVE)
+fetch: init $(COPY_SOURCE) $(REPOSITORY_RESOLVE)
 # set any missing defaults in the secrets mapping file
 	jx secret convert edit
 
