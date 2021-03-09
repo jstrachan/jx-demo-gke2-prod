@@ -109,6 +109,10 @@ gitops-scheduler:
 # lets generate the lighthouse configuration as we are in a development cluster
 	jx gitops scheduler
 
+# lets force a rolling upgrade of lighthouse pods whenever we update the lighthouse config...
+	jx gitops hash -s config-root/namespaces/jx/lighthouse-config/config-cm.yaml -s config-root/namespaces/jx/lighthouse-config/plugins-cm.yaml -d config-root/namespaces/jx/lighthouse
+
+
 .PHONY: no-gitops-scheduler
 no-gitops-scheduler:
 	@echo "disabled the scheduler generation as we are not a development cluster"
@@ -133,9 +137,6 @@ post-build: $(GENERATE_SCHEDULER)
 # lets enable pusher-wave to perform rolling updates of any Deployment when its underlying Secrets get modified
 # by modifying the underlying secret store (e.g. vault / GSM / ASM) which then causes External Secrets to modify the k8s Secrets
 	jx gitops annotate --dir  $(OUTPUT_DIR)/namespaces --kind Deployment --selector app=pusher-wave --invert-selector wave.pusher.com/update-on-config-change=true
-
-# lets force a rolling upgrade of lighthouse pods whenever we update the lighthouse config...
-	jx gitops hash -s config-root/namespaces/jx/lighthouse-config/config-cm.yaml -s config-root/namespaces/jx/lighthouse-config/plugins-cm.yaml -d config-root/namespaces/jx/lighthouse
 
 .PHONY: kustomize
 kustomize: pre-build
