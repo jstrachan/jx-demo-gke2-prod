@@ -19,8 +19,6 @@ spec:
   - key: dev
     owner: jstrachan
     repository: jx-demo-gke2-prod
-  - key: staging
-  - key: production
   ingress:
     domain: ""
     externalDNS: false

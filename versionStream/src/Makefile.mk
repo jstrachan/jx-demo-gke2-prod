@@ -2,6 +2,7 @@ FETCH_DIR := build/base
 TMP_TEMPLATE_DIR := build/tmp
 OUTPUT_DIR := config-root
 KUBEAPPLY ?= kubectl-apply
+HELM_TMP_SECRETS ?= /tmp/secrets/jx-helm
 
 # this target is only needed for development clusters
 # for remote staging/production clusters try:
@@ -33,7 +34,7 @@ HELMFILE_TEMPLATE_FLAGS ?=
 
 .PHONY: clean
 clean:
-	@rm -rf build $(OUTPUT_DIR)
+	@rm -rf build $(OUTPUT_DIR) $(HELM_TMP_SECRETS)
 
 .PHONY: setup
 setup:
