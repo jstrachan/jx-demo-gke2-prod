@@ -12,12 +12,13 @@ repositories:
 - name: jxgh
   url: https://jenkins-x-charts.github.io/repo
 releases:
-- chart: jenkins-x/jxboot-helmfile-resources
-  version: 1.0.31
+- chart: /Users/jstrachan/workspace/workspace/java/jxboot-helmfile-resources/jxboot-helmfile-resources
   name: jxboot-helmfile-resources
   values:
   - ../../versionStream/charts/jenkins-x/jxboot-helmfile-resources/values.yaml.gotmpl
   - jx-values.yaml
+  - basicAuthSecrets:
+      enabled: false
 - chart: jx3/jenkins-x-crds
   version: 3.0.5
   name: jenkins-x-crds

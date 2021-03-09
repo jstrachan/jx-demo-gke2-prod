@@ -2,6 +2,7 @@ FETCH_DIR := build/base
 TMP_TEMPLATE_DIR := build/tmp
 OUTPUT_DIR := config-root
 KUBEAPPLY ?= kubectl-apply
+HELM_TMP_GENERATE ?= /tmp/generate
 HELM_TMP_SECRETS ?= /tmp/secrets/jx-helm
 
 # this target is only needed for development clusters
@@ -9,6 +10,12 @@ HELM_TMP_SECRETS ?= /tmp/secrets/jx-helm
 #
 #     export GENERATE_SCHEDULER=no-gitops-scheduler
 GENERATE_SCHEDULER ?= gitops-scheduler
+
+# this target is only needed for development clusters
+# for remote staging/production clusters try:
+#
+#     export REPOSITORY_RESOLVE=no-repository-resolve
+REPOSITORY_RESOLVE ?= repository-resolve
 
 # these values are only required for vault - you can ignore if you are using a cloud secret store
 VAULT_ADDR ?= https://vault.jx-vault:8200
@@ -34,12 +41,10 @@ HELMFILE_TEMPLATE_FLAGS ?=
 
 .PHONY: clean
 clean:
-	@rm -rf build $(OUTPUT_DIR) $(HELM_TMP_SECRETS)
+	@rm -rf build $(OUTPUT_DIR) $(HELM_TMP_SECRETS) $(HELM_TMP_GENERATE)
 
 .PHONY: setup
 setup:
-# lets create any missing SourceRepository defined in .jx/gitops/source-config.yaml which are not in: versionStream/src/base/namespaces/jx/source-repositories
-	jx gitops repository create
 
 .PHONY: init
 init: setup
@@ -50,14 +55,38 @@ init: setup
 	@mkdir -p $(FETCH_DIR)/cluster/crds
 
 
-.PHONY: fetch
-fetch: init
+
+.PHONY: repository-resolve
+repository-resolve:
+# lets create any missing SourceRepository defined in .jx/gitops/source-config.yaml which are not in: versionStream/src/base/namespaces/jx/source-repositories
+	jx gitops repository create
+
 # lets configure the cluster gitops repository URL on the requirements if its missing
 	jx gitops repository resolve --source-dir $(OUTPUT_DIR)/namespaces
 
 # lets generate any jenkins job-values.yaml files to import projects into Jenkins
 	jx gitops jenkins jobs
 
+
+.PHONY: no-repository-resolve
+no-repository-resolve:
+	@echo "disabled the repository resolve as we are not a development cluster"
+
+.PHONY: gitops-scheduler
+gitops-scheduler:
+# lets generate the lighthouse configuration as we are in a development cluster
+	jx gitops scheduler
+
+# lets force a rolling upgrade of lighthouse pods whenever we update the lighthouse config...
+	jx gitops hash -s config-root/namespaces/jx/lighthouse-config/config-cm.yaml -s config-root/namespaces/jx/lighthouse-config/plugins-cm.yaml -d config-root/namespaces/jx/lighthouse
+
+
+.PHONY: no-gitops-scheduler
+no-gitops-scheduler:
+	@echo "disabled the lighthouse scheduler generation as we are not a development cluster"
+
+.PHONY: fetch
+fetch: init $(REPOSITORY_RESOLVE)
 # set any missing defaults in the secrets mapping file
 	jx secret convert edit
 
@@ -105,18 +134,6 @@ build-nokustomise: copy-resources post-build
 .PHONY: pre-build
 pre-build:
 
-.PHONY: gitops-scheduler
-gitops-scheduler:
-# lets generate the lighthouse configuration as we are in a development cluster
-	jx gitops scheduler
-
-# lets force a rolling upgrade of lighthouse pods whenever we update the lighthouse config...
-	jx gitops hash -s config-root/namespaces/jx/lighthouse-config/config-cm.yaml -s config-root/namespaces/jx/lighthouse-config/plugins-cm.yaml -d config-root/namespaces/jx/lighthouse
-
-
-.PHONY: no-gitops-scheduler
-no-gitops-scheduler:
-	@echo "disabled the scheduler generation as we are not a development cluster"
 
 .PHONY: post-build
 post-build: $(GENERATE_SCHEDULER)

@@ -15,10 +15,6 @@ spec:
     gitServer: https://github.com
     provider: kubernetes
     registry: ghcr.io
-  environments:
-  - key: dev
-    owner: jstrachan
-    repository: jx-demo-gke2-prod
   ingress:
     domain: ""
     externalDNS: false
