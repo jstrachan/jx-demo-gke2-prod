@@ -1,0 +1,8 @@
+# Source: nodey546/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nodey546-nodey546
+  namespace: jx-jx-demo-gke2-prod
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
