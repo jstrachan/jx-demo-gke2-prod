@@ -2,9 +2,9 @@
 apiVersion: jenkins.io/v1
 kind: Release
 metadata:
-  creationTimestamp: "2021-03-23T12:53:14Z"
+  creationTimestamp: "2021-03-23T12:57:44Z"
   deletionTimestamp: null
-  name: 'nodey546-1.0.19'
+  name: 'nodey546-1.0.20'
   namespace: jx-jx-demo-gke2-prod
   labels:
     gitops.jenkins-x.io/pipeline: 'namespaces'
@@ -18,8 +18,8 @@ spec:
         email: jenkins-x@googlegroups.com
         name: jenkins-x-bot
       message: |
-        chore: release 1.0.19
-      sha: e437db4a31055971b9bfef67728a2fdf226f1ba5
+        chore: release 1.0.20
+      sha: de5ce1aefbb047b599398fbbeb171b1fc7bed922
     - author:
         email: jenkins-x@googlegroups.com
         name: jenkins-x-bot
@@ -29,11 +29,11 @@ spec:
         name: jenkins-x-bot
       message: |
         chore: add variables
-      sha: 359f555694d27cede631f85b576ad10597041b86
+      sha: 4a710966042edfdd298758d46be28aad6f8ef6e7
   gitHttpUrl: https://github.com/jstrachan/nodey546
   gitOwner: jstrachan
   gitRepository: nodey546
   name: 'nodey546'
-  releaseNotesURL: https://github.com/jstrachan/nodey546/releases/tag/v1.0.19
-  version: v1.0.19
+  releaseNotesURL: https://github.com/jstrachan/nodey546/releases/tag/v1.0.20
+  version: v1.0.20
 status: {}
