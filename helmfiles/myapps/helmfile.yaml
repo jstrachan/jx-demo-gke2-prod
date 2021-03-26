@@ -13,5 +13,7 @@ releases:
 - chart: dev2/nodey560
   version: 0.0.12
   name: nodey560
+  values:
+  - jx-values.yaml
 templates: {}
 renderedvalues: {}
