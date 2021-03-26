@@ -28,8 +28,10 @@ jxRequirements:
     gitKind: github
     gitName: github
     gitServer: https://github.com
+    project: jenkins-x-labs-bdd1
     provider: kubernetes
     registry: ghcr.io
+    zone: us-central1-a
   ingress:
     domain: 34.105.205.178.nip.io
     externalDNS: false
@@ -38,11 +40,19 @@ jxRequirements:
     tls:
       email: ""
       enabled: false
-      production: false
+      production: true
+  kuberhealthy: true
   pipelineUser:
     username: jstrachan
   repository: bucketrepo
   secretStorage: local
+  storage:
+  - name: logs
+    url: gs://logs-jstrachan-tekton-prod-0b0e121c60fc
+  - name: reports
+    url: gs://reports-jstrachan-tekton-prod-0b0e121c60fc
+  - name: repository
+    url: gs://repository-jstrachan-tekton-prod-0b0e121c60fc
   vault: {}
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
@@ -50,7 +60,7 @@ jxRequirementsIngressExternalDNS:
 jxRequirementsIngressTLS:
   enabled: false
 jxRequirementsKuberhealthy:
-  enabled: false
+  enabled: true
 jxRequirementsTLSCheck:
   enabled: false
 jxRequirementsVault:
