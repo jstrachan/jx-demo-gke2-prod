@@ -1,4 +1,8 @@
 filepath: ""
+environments:
+  default:
+    values:
+    - jx-values.yaml
 namespace: myapps
 repositories:
 - name: dev
@@ -7,5 +11,7 @@ releases:
 - chart: dev/nodey560
   version: 0.0.14
   name: nodey560
+  values:
+  - jx-values.yaml
 templates: {}
 renderedvalues: {}
