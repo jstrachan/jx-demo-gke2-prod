@@ -1,0 +1,8 @@
+# Source: nodey560/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nodey560-nodey560
+  namespace: myapps
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
