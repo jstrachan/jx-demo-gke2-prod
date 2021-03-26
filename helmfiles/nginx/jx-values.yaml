@@ -33,7 +33,7 @@ jxRequirements:
     registry: ghcr.io
     zone: us-central1-a
   ingress:
-    domain: 34.105.205.178.nip.io
+    domain: change.me
     externalDNS: false
     kind: ingress
     namespaceSubDomain: -nginx.
