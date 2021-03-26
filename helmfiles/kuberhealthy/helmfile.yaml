@@ -28,5 +28,5 @@ releases:
   values:
   - ../../versionStream/charts/jx3/jenkins-x-crds/values.yaml.gotmpl
   - jx-values.yaml
-- templates: {}
+templates: {}
 renderedvalues: {}
