@@ -2,5 +2,6 @@ filepath: ""
 helmfiles:
 - path: helmfiles/kuberhealthy/helmfile.yaml
 - path: helmfiles/nginx/helmfile.yaml
+- path: helmfiles/myapps/helmfile.yaml
 templates: {}
 renderedvalues: {}
