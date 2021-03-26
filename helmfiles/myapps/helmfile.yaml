@@ -1,0 +1,11 @@
+filepath: ""
+namespace: myapps
+repositories:
+- name: dev
+  url: http://jenkins-x-chartmuseum.jx.svc.cluster.local:8080
+releases:
+- chart: dev/nodey560
+  version: 0.0.8
+  name: nodey560
+templates: {}
+renderedvalues: {}
