@@ -22,11 +22,5 @@ releases:
   values:
   - ../../versionStream/charts/jx3/jx-kh-check/values.yaml.gotmpl
   - jx-values.yaml
-- chart: jx3/jenkins-x-crds
-  version: 3.0.5
-  name: jenkins-x-crds
-  values:
-  - ../../versionStream/charts/jx3/jenkins-x-crds/values.yaml.gotmpl
-  - jx-values.yaml
 templates: {}
 renderedvalues: {}
