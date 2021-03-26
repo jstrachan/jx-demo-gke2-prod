@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
   name: nodey560
-  namespace: jx-jx-demo-gke2-prod
+  namespace: myapps
   labels:
     gitops.jenkins-x.io/pipeline: 'namespaces'
 spec:
@@ -15,4 +15,4 @@ spec:
           - backend:
               serviceName: nodey560
               servicePort: 80
-      host: nodey560-jx-jx-demo-gke2-prod.34.105.205.178.nip.io
+      host: nodey560-myapps.34.105.205.178.nip.io

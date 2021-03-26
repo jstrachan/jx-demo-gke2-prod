@@ -1,37 +1,38 @@
-# Source: nodey546/templates/deployment.yaml
+# Source: nodey560/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodey546-nodey546
+  name: nodey560-nodey560
   labels:
     draft: draft-app
-    chart: "nodey546-1.0.32"
+    chart: "nodey560-0.0.9"
     gitops.jenkins-x.io/pipeline: 'namespaces'
-  namespace: jx-jx-demo-gke2-prod
+  namespace: myapps
   annotations:
     wave.pusher.com/update-on-config-change: 'true'
 spec:
   selector:
     matchLabels:
-      app: nodey546-nodey546
+      app: nodey560-nodey560
   replicas: 1
   template:
     metadata:
       labels:
         draft: draft-app
-        app: nodey546-nodey546
+        app: nodey560-nodey560
     spec:
-      serviceAccountName: nodey546-nodey546
+      serviceAccountName: nodey560-nodey560
       containers:
-        - name: nodey546
-          image: "gcr.io/jenkins-x-labs-bdd1/nodey546:1.0.32"
+        - name: nodey560
+          image: "gcr.io/jenkins-x-labs-bdd1/nodey560:0.0.9"
           imagePullPolicy: IfNotPresent
           env:
             - name: VERSION
-              value: 1.0.32
+              value: 0.0.9
           envFrom: null
           ports:
-            - containerPort: 8080
+            - name: http
+              containerPort: 8080
           livenessProbe:
             httpGet:
               path: /

@@ -4,9 +4,9 @@ kind: Service
 metadata:
   name: nodey560
   labels:
-    chart: "nodey560-0.0.3"
+    chart: "nodey560-0.0.9"
     gitops.jenkins-x.io/pipeline: 'namespaces'
-  namespace: jx-jx-demo-gke2-prod
+  namespace: myapps
 spec:
   type: ClusterIP
   ports:

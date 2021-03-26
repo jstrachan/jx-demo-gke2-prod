@@ -2,10 +2,10 @@
 apiVersion: jenkins.io/v1
 kind: Release
 metadata:
-  creationTimestamp: "2021-03-17T10:32:59Z"
+  creationTimestamp: "2021-03-26T11:58:47Z"
   deletionTimestamp: null
-  name: 'nodey560-0.0.3'
-  namespace: jx-jx-demo-gke2-prod
+  name: 'nodey560-0.0.9'
+  namespace: myapps
   labels:
     gitops.jenkins-x.io/pipeline: 'namespaces'
 spec:
@@ -18,8 +18,8 @@ spec:
         email: jenkins-x@googlegroups.com
         name: jenkins-x-bot
       message: |
-        chore: release 0.0.3
-      sha: 62739ab785880588978333f69b685963f7f1c337
+        chore: release 0.0.9
+      sha: c1b30bec8841376748a9c013648e99255164c8d3
     - author:
         email: jenkins-x@googlegroups.com
         name: jenkins-x-bot
@@ -29,7 +29,7 @@ spec:
         name: jenkins-x-bot
       message: |
         chore: add variables
-      sha: 37fa56b79438b3ff725abc70db9e2557d5920c59
+      sha: 9ed55190f679dc2779465675fb2a196b4b0cf0df
     - author:
         email: james.strachan@gmail.com
         name: James Strachan
@@ -37,12 +37,12 @@ spec:
       committer:
         email: noreply@github.com
         name: GitHub
-      message: Update index.html
-      sha: 0acef6c68498b5ce3bdc6bf23e545ac2c5b49809
+      message: Update release.yaml
+      sha: 2c4b2b163d3bed85a8eb280e9cda6d33448633b3
   gitHttpUrl: https://github.com/jstrachan/nodey560
   gitOwner: jstrachan
   gitRepository: nodey560
   name: 'nodey560'
-  releaseNotesURL: https://github.com/jstrachan/nodey560/releases/tag/v0.0.3
-  version: v0.0.3
+  releaseNotesURL: https://github.com/jstrachan/nodey560/releases/tag/v0.0.9
+  version: v0.0.9
 status: {}
