@@ -47,7 +47,7 @@
 	    <tr>
 	      <td><a href='' title='A Helm chart for Kubernetes'> <img src='https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png' width='24px' height='24px'> nodey560 </a></td>
 	      <td>0.0.11</td>
-	      <td><a href='http://nodey560-myapps.34.105.205.178.nip.io'>view</a></td>
+	      <td><a href='http://nodey560-myapps.35.192.63.127.nip.io'>view</a></td>
 	      <td></td>
 	    </tr>
 
