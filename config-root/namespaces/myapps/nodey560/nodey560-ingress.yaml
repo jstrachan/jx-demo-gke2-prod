@@ -15,4 +15,4 @@ spec:
           - backend:
               serviceName: nodey560
               servicePort: 80
-      host: nodey560-myapps.change.me
+      host: nodey560-myapps.35.192.119.220.nip.io

@@ -76,3 +76,18 @@
     - https://github.com/kubernetes/ingress-nginx
     type: application
     version: 3.12.0
+- namespace: myapps
+  path: helmfiles/myapps/helmfile.yaml
+  releases:
+  - apiVersion: v1
+    applicationUrl: http://nodey560-myapps.35.192.119.220.nip.io
+    description: A Helm chart for Kubernetes
+    icon: https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png
+    ingresses:
+    - name: nodey560
+      url: http://nodey560-myapps.35.192.119.220.nip.io
+    name: nodey560
+    repositoryName: dev
+    repositoryUrl: http://chartmuseum-jx.34.89.8.12.nip.io/
+    resourcePath: config-root/namespaces/myapps/nodey560
+    version: 0.0.16
