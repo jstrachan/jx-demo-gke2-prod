@@ -7,11 +7,16 @@ namespace: myapps
 repositories:
 - name: dev
   url: http://chartmuseum-jx.34.89.8.12.nip.io/
+- name: dev2
+  url: http://chartmuseum-jx.35.242.181.72.nip.io/
 releases:
 - chart: dev/nodey560
   version: 0.0.16
   name: nodey560
   values:
   - jx-values.yaml
+- chart: dev2/nodey554
+  version: 1.0.38
+  name: nodey554
 templates: {}
 renderedvalues: {}
